@@ -3,13 +3,49 @@ const fs = require("fs");
 class Contenedor {
   constructor(file) {
     this.file = file;
-    console.log("contenedor: ", this);
   }
-  save(producto) {
-    console.log("save: ", producto);
-    const productoString = JSON.stringify(producto, null, 2);
-    console.log(productoString);
-    fs.promises.writeFile(`./${this.file}`);
+  async save(producto) {
+    try {
+      //lee archivo para conocer ID
+      const contenido = await fs.promises.readFile(`./${this.file}`, "utf-8");
+
+      let productos = [];
+
+      if (contenido === "") {
+        producto.id = 1;
+        productos.push(producto);
+      } else {
+        const productList = JSON.parse(contenido);
+
+        producto.id = productList[productList.length - 1].id + 1;
+        productList.push(producto);
+        productos = productList;
+      }
+
+      const productosString = JSON.stringify(productos, null, 2);
+
+      await fs.promises.writeFile(`./${this.file}`, productosString);
+      return producto.id;
+    } catch (error) {
+      console.error("Error: ", error);
+    }
+  }
+  async getAll() {
+    try {
+      const contenido = await fs.promises.readFile(`./${this.file}`, "utf-8");
+      const productList = JSON.parse(contenido);
+
+      return productList;
+    } catch (error) {
+      console.error("error: ", error);
+    }
+  }
+  async deleteAll() {
+    try {
+      await fs.promises.writeFile(`./${this.file}`, "");
+    } catch (error) {
+      console.error("error: ", error);
+    }
   }
 }
 
