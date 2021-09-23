@@ -66,8 +66,6 @@ class Contenedor {
       const productList = JSON.parse(contenido);
 
       productos = productList;
-      console.log(productos);
-      console.log("asdasd");
       return productos[`${idToGet}`];
     } catch (error) {
       console.error("error: ", error);
