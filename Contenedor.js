@@ -30,12 +30,45 @@ class Contenedor {
       console.error("Error: ", error);
     }
   }
+
   async getAll() {
     try {
       const contenido = await fs.promises.readFile(`./${this.file}`, "utf-8");
       const productList = JSON.parse(contenido);
 
       return productList;
+    } catch (error) {
+      console.error("error: ", error);
+    }
+  }
+  async deleteById(producto) {
+    try {
+      const contenido = await fs.promises.readFile(`./${this.file}`, "utf-8");
+      let productos = [];
+      const productList = JSON.parse(contenido);
+
+      productos = productList;
+
+      // console.log(productList);
+      productos.splice(`${producto.id}`, 1);
+
+      const productosString = JSON.stringify(productos, null, 2);
+
+      await fs.promises.writeFile(`./${this.file}`, productosString);
+    } catch (error) {
+      console.error("error: ", error);
+    }
+  }
+  async getById(idToGet) {
+    try {
+      const contenido = await fs.promises.readFile(`./${this.file}`, "utf-8");
+      let productos = [];
+      const productList = JSON.parse(contenido);
+
+      productos = productList;
+      console.log(productos);
+      console.log("asdasd");
+      return productos[`${idToGet}`];
     } catch (error) {
       console.error("error: ", error);
     }

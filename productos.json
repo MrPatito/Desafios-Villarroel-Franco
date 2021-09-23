@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Zenitas",
+    "watts": 400,
+    "components": [
+      "cables",
+      "leds",
+      "botones"
+    ],
+    "id": 2
+  },
+  {
+    "name": "Malakito",
+    "watts": 200,
+    "components": [
+      "cables",
+      "leds",
+      "botones"
+    ],
+    "id": 3
+  }
+]

@@ -3,17 +3,23 @@ const Contenedor = require("./Contenedor");
 const contenedor = new Contenedor("./productos.json");
 
 const productoUno = {
-  name: "Zenitas",
-  watts: 300,
+  name: "Malakito",
+  watts: 200,
   components: ["cables", "leds", "botones"],
 };
 
+let idAEliminar = 1;
+let idAObtener = 1;
 const main = async () => {
-  //   const id = await contenedor.save(productoUno);
-  //   console.log(id);
-  //   const list = await contenedor.getAll();
-  //   console.log(list);
-  await contenedor.deleteAll();
-  console.log("all deleted");
+  // const id = await contenedor.save(productoUno);
+  // console.log(id);
+  const getId = await contenedor.getById(idAObtener);
+  console.log(getId);
+  // const list = await contenedor.getAll();
+  // console.log(list);
+  // const deleteById = await contenedor.deleteById(idAEliminar);
+  // console.log("Elemento eliminado");
+  // const deleteal = await contenedor.deleteAll();
+  // console.log("all deleted");
 };
 main();
