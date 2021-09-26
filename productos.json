@@ -1,7 +1,17 @@
 [
   {
-    "name": "Zenitas",
-    "watts": 400,
+    "name": "Malakito",
+    "watts": 200,
+    "components": [
+      "cables",
+      "leds",
+      "botones"
+    ],
+    "id": 1
+  },
+  {
+    "name": "Zenita",
+    "watts": 600,
     "components": [
       "cables",
       "leds",
@@ -10,8 +20,8 @@
     "id": 2
   },
   {
-    "name": "Malakito",
-    "watts": 200,
+    "name": "Catilo",
+    "watts": 800,
     "components": [
       "cables",
       "leds",

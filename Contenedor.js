@@ -63,8 +63,10 @@ class Contenedor {
     try {
       const contenido = await fs.promises.readFile(`./${this.file}`, "utf-8");
       let productos = [];
+      console.log(productos);
       const productList = JSON.parse(contenido);
-
+      console.log("asdasd");
+      console.log(productList);
       productos = productList;
       return productos[`${idToGet}`];
     } catch (error) {
