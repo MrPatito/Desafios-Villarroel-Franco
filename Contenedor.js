@@ -66,7 +66,7 @@ class Contenedor {
     try {
       const contenido = await fs.promises.readFile(`./${this.file}`, "utf-8");
       const productList = JSON.parse(contenido);
-      let producto = productList.find((i) => i.id === id);
+      let producto = productList.find((p) => p.id === id);
 
       if (!producto) {
         return null;
