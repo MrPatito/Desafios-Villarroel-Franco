@@ -41,7 +41,7 @@ class Contenedor {
       console.error("error: ", error);
     }
   }
-  async deleteById(producto) {
+  async deleteById(id) {
     try {
       const contenido = await fs.promises.readFile(`./${this.file}`, "utf-8");
       let productos = [];
@@ -49,9 +49,12 @@ class Contenedor {
 
       productos = productList;
 
-      // console.log(productList);
-      productos.splice(`${producto.id}`, 1);
-
+      productos.forEach((producto, index) => {
+        if (producto.id === id) {
+          productos.splice(index, 1);
+          console.log(`Elemento ${producto.id} eliminado`);
+        }
+      });
       const productosString = JSON.stringify(productos, null, 2);
 
       await fs.promises.writeFile(`./${this.file}`, productosString);
@@ -66,9 +69,9 @@ class Contenedor {
       console.log(productos);
       const productList = JSON.parse(contenido);
       console.log("asdasd");
-      console.log(productList);
+      // console.log(productList);
       productos = productList;
-      return productos[`${idToGet}`];
+      return productos[`${idToGet - 1}`];
     } catch (error) {
       console.error("error: ", error);
     }
