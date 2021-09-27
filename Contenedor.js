@@ -62,16 +62,16 @@ class Contenedor {
       console.error("error: ", error);
     }
   }
-  async getById(idToGet) {
+  async getById(id) {
     try {
       const contenido = await fs.promises.readFile(`./${this.file}`, "utf-8");
-      let productos = [];
-      console.log(productos);
       const productList = JSON.parse(contenido);
-      console.log("asdasd");
-      // console.log(productList);
-      productos = productList;
-      return productos[`${idToGet - 1}`];
+      let producto = productList.find((i) => i.id === id);
+
+      if (!producto) {
+        return null;
+      }
+      return producto;
     } catch (error) {
       console.error("error: ", error);
     }
