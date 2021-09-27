@@ -9,16 +9,19 @@ const productoUno = {
 };
 
 let idAEliminar = 3;
-let idAObtener = 1;
+let idAObtener = 2;
 const main = async () => {
   // const id = await contenedor.save(productoUno);
   // console.log(id);
-  // const getId = await contenedor.getById(idAObtener);
-  // console.log(getId);
+  //
+  const getId = await contenedor.getById(idAObtener);
+  console.log(getId);
+  //
   // const list = await contenedor.getAll();
   // console.log(list);
-  const deleteById = await contenedor.deleteById(idAEliminar);
-  console.log("Elemento eliminado");
+  //
+  // const deleteById = await contenedor.deleteById(idAEliminar);
+  //
   // const deleteal = await contenedor.deleteAll();
   // console.log("all deleted");
 };
